@@ -15,23 +15,15 @@ body {
 
 .container__header {
     width: 100%;
-    @include flexContainer(column,center , space-evenly);
+    @include flexContainer(row,space-between ,center );
 
-    &--search {
-
-        @include flexContainer(row, space-evenly, baseline);
-
+    &--search{
+        @include flexContainer(row,flex-end,flex-end);
+        width: 50%;
+        margin-right: 20px;
     }
 
-    &--container {
-        @include flexContainer(row, center, baseline);
-
-    }
-
-    &--input{
-        width: 100%;
-        margin: 0 auto;
-    }
+   
 
 }
 

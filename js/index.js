@@ -8,17 +8,11 @@ document.addEventListener('DOMContentLoaded', e => {
 
     let displayHotels = (json) => {
 
-        console.log(json);
-
         const arrayShow = json.map((element) => {
-            
-            let $articleContent = document.createElement('article');
-            
-            $articleContent.classList.add('container__article');
-            
-            $articleContent.innerHTML += `
 
-            <h1>Principal ${element.type}</h1>
+            return `
+
+            <article class="container__article">
 
                 <figure class="container__article--img">
 
@@ -38,24 +32,24 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 <h2 class="container__article--description">${element.title}</h2>
 
+            </article>
             `;
 
 
-            $fragment.appendChild($articleContent);
-            
-        })
-        
-        $containerContent.appendChild($fragment);
- 
-    }
 
+        }).join('');
+
+        $containerContent.innerHTML = arrayShow;
+        
+    }
+    
 
     $btnSearch.addEventListener('click', e => {
 
         let inputValue = $inputSearch.value.toLowerCase();
 
         searchCity(inputValue)
-        
+
     })
 
     async function searchCity(citySearch) {
@@ -66,17 +60,17 @@ document.addEventListener('DOMContentLoaded', e => {
 
             let data = await res.json();
 
-           
-                let result = data.filter((word) =>{
 
-                        
-                    return (word.city.toLowerCase().includes(citySearch) || word.country.toLowerCase().includes(citySearch))
-
-                });
+            let result = data.filter((word) => {
 
 
-                displayHotels(result);
-                
+                return (word.city.toLowerCase().includes(citySearch) || word.country.toLowerCase().includes(citySearch))
+
+            });
+
+
+            displayHotels(result);
+
 
         } catch (err) {
 
@@ -86,7 +80,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
     }
 
-
+    searchCity('');
 
 
 
