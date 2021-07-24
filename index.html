@@ -31,19 +31,26 @@
 
         </figure>
 
-        <nav class="container__header--search">
+        <div class="container__header--bar">
 
-            <input type="text" value="Helsinki,Finlandia" class="container__header--input">
+            <nav class="container__header--search">
+                
+                
+                <div class="container__header--container">
 
-            <div class="container__header--container">
+                    <input type="text" value="Helsinki,Finlandia" class="container__header--input">
+                    
+    
+                    <input type="text" class="container__header--input" id="input-search" placeholder="Search">
+    
+                    <button type="submit" id="submit-search" class="container__header--submit"><i class="fas fa-search icon-search" ></i></button>
+    
+                </div>
+    
+            </nav>
 
-                <input type="text" class="container__header--input" id="input-search">
+        </div>
 
-                <button type="submit" id="submit-search"><i class="fas fa-search " ></i></button>
-
-            </div>
-
-        </nav>
 
     </header>
 
@@ -53,6 +60,10 @@
 
         <p><span class="container__main--stays">12+ Stays</span></p>
 
+        <label class="switch">
+            <input type="checkbox" id="btn-dark">
+            <span class="slider round"></span>
+          </label>
 
     </div>
 

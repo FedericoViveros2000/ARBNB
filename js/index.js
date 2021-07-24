@@ -4,7 +4,45 @@ document.addEventListener('DOMContentLoaded', e => {
     const $btnSearch = document.getElementById('submit-search');
     const $fragment = document.createDocumentFragment();
     const $containerContent = document.querySelector('.container__main');
+    const $btnMode = document.getElementById('btn-dark');
 
+
+    /* Para el dark mode */
+
+    $btnMode.addEventListener('click', e=>{
+
+       document.body.classList.toggle('dark-mode')
+
+        
+        if(document.body.classList.contains('dark-mode')){
+
+            localStorage.setItem('mode', 'true');
+
+  
+        }else{
+
+            localStorage.setItem('mode', 'false');
+
+        }
+
+       
+
+    })
+
+    /* Para comprobar si el modo oscuro ya se activo previamente */
+
+    if(localStorage.getItem('mode') === 'true'){
+
+        document.body.classList.add('dark-mode');
+
+        $btnMode.setAttribute('checked', true);
+
+
+    }else{
+
+        document.body.classList.remove('dark-mode')
+
+    }
 
     let displayHotels = (json) => {
 
@@ -16,7 +54,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 <figure class="container__article--img">
 
-                     <img src="${element.photo}" alt = "Imagen de un hotel" class="container__article--images">
+                     <img src="${element.photo}" alt = "Imagen de un hotel" class="container__article--images" loading="lazy">
 
                </figure>
 
@@ -42,7 +80,7 @@ document.addEventListener('DOMContentLoaded', e => {
         $containerContent.innerHTML = arrayShow;
         
     }
-    
+
 
     $btnSearch.addEventListener('click', e => {
 

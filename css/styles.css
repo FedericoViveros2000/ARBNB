@@ -11,8 +11,13 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+body.dark-mode {
+  -webkit-transition: background-color .7s linear;
+  transition: background-color .7s linear;
+  background-color: #333333;
+}
+
 .container__header {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,6 +31,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden;
 }
 
 .container__header--search {
@@ -41,9 +49,54 @@ body {
           justify-content: flex-end;
   -webkit-box-align: end;
       -ms-flex-align: end;
-          align-items: flex-end;
-  width: 50%;
+          align-items: end;
+  width: 400px;
+  height: 40px;
   margin-right: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 2px 5px 20px 1px rgba(0, 0, 0, 0.274);
+          box-shadow: 2px 5px 20px 1px rgba(0, 0, 0, 0.274);
+}
+
+.container__header--input {
+  width: 50%;
+  height: 100%;
+  padding: 0px 10px;
+  background-color: #fff;
+  border: none;
+  border-right: 1px solid #333333;
+}
+
+.container__header--submit {
+  height: 100%;
+  width: 50px;
+  border: none;
+  background-color: #fff;
+  text-align: center;
+}
+
+.container__header--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-search {
+  color: #EB5757;
+  margin-left: 15px;
 }
 
 .container__main {
@@ -65,7 +118,7 @@ body {
 }
 
 .container__main--title {
-  padding: 0 20px;
+  padding: 0 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,6 +141,62 @@ body {
 .container__main--stays {
   font-size: 0.875rem;
   color: #4F4F4F;
+}
+
+/* Para el boton del modo oscuro */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2.7px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ffae00;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+          transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 .container__article {
@@ -197,6 +306,49 @@ body {
   }
   .container__article {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 572px) {
+  .container__header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .container__header--bar {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 20px 0;
+  }
+  .container__header--search {
+    max-width: 350px;
+    margin: 0 10px;
+  }
+  .container__header--input {
+    font-size: 0.875rem;
+    outline: none;
   }
 }
 /*# sourceMappingURL=styles.css.map */
