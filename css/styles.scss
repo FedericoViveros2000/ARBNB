@@ -11,11 +11,11 @@
 
 body {
     font-family: $font-primary;
+    transition: background-color .7s linear;
 }
 
-body.dark-mode{
-    transition: background-color .7s linear;
-    background-color: $title-color;
+body.dark-mode {
+    background-color: $dark-background;
 }
 
 .container__header {
@@ -42,6 +42,19 @@ body.dark-mode{
         background-color: #fff;
         border: none;
         border-right: 1px solid $title-color;
+    }
+
+    body.dark-mode &--search {
+        background-color: $dark-cards;
+    }
+
+    body.dark-mode &--input {
+        background-color: $dark-cards;
+        color: $dark-font-color;
+    }
+
+    body.dark-mode &--submit {
+        background-color: $dark-cards;
     }
 
     &--submit {
@@ -85,6 +98,14 @@ body.dark-mode{
     &--stays {
         font-size: 0.875rem;
         color: $host-color;
+    }
+
+    body.dark-mode &--stays {
+        color: $dark-font-color;
+    }
+
+    body.dark-mode &--principal {
+        color: $dark-font-color;
     }
 
 
@@ -164,6 +185,10 @@ input:checked+.slider:before {
         object-fit: cover;
     }
 
+    body.dark-mode &--images {
+        filter: opacity(.7);
+    }
+
     &--caption {
         width: 100%;
         @include flexContainer(row, space-around, baseline);
@@ -177,12 +202,26 @@ input:checked+.slider:before {
         font-weight: $font-weight-bold;
     }
 
+
+
     &--description {
         font-size: 0.875rem;
         font-weight: $font-weight-semibold2;
         color: $title-color;
         align-self: flex-start;
         margin-left: 10px;
+    }
+
+    body.dark-mode &--description {
+        color: $dark-font-color;
+    }
+
+    body.dark-mode &--span {
+        color: $dark-font-color;
+    }
+
+    body.dark-mode &--host {
+        color: $dark-font-color;
     }
 
 
@@ -231,6 +270,13 @@ input:checked+.slider:before {
 
 @media screen and (max-width:572px) {
 
+    .container__main {
+        &--title {
+            padding: 0 25px;
+            @include flexContainer(row, space-between, baseline)
+        }
+    }
+
     .container__header {
 
         @include flexContainer(column, center, flex-start);
@@ -247,13 +293,20 @@ input:checked+.slider:before {
             margin: 0 10px;
         }
 
-        &--input{
+
+        &--input {
             font-size: 0.875rem;
             outline: none;
         }
 
-       
+        
+    }
+    
+    .container__article{
+
+        &--description{
+            margin: 20px;
+        }
 
     }
-
 }
