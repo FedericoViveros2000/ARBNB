@@ -1,4 +1,6 @@
+import clickFilter from "./filter.js";
 document.addEventListener('DOMContentLoaded', e => {
+
 
     const $inputSearch = document.getElementById('input-search');
     const $btnSearch = document.getElementById('submit-search');
@@ -9,36 +11,36 @@ document.addEventListener('DOMContentLoaded', e => {
 
     /* Para el dark mode */
 
-    $btnMode.addEventListener('click', e=>{
+    $btnMode.addEventListener('click', e => {
 
-       document.body.classList.toggle('dark-mode')
+        document.body.classList.toggle('dark-mode')
 
-        
-        if(document.body.classList.contains('dark-mode')){
+
+        if (document.body.classList.contains('dark-mode')) {
 
             localStorage.setItem('mode', 'true');
 
-  
-        }else{
+
+        } else {
 
             localStorage.setItem('mode', 'false');
 
         }
 
-       
+
 
     })
 
     /* Para comprobar si el modo oscuro ya se activo previamente */
 
-    if(localStorage.getItem('mode') === 'true'){
+    if (localStorage.getItem('mode') === 'true') {
 
         document.body.classList.add('dark-mode');
 
         $btnMode.setAttribute('checked', true);
 
 
-    }else{
+    } else {
 
         document.body.classList.remove('dark-mode')
 
@@ -50,7 +52,8 @@ document.addEventListener('DOMContentLoaded', e => {
 
             return `
 
-            <article class="container__article">
+            
+            <article class="container__article" value="${element.id}">
 
                 <figure class="container__article--img">
 
@@ -70,7 +73,9 @@ document.addEventListener('DOMContentLoaded', e => {
 
                 <h2 class="container__article--description">${element.title}</h2>
 
+
             </article>
+            
             `;
 
 
@@ -78,8 +83,15 @@ document.addEventListener('DOMContentLoaded', e => {
         }).join('');
 
         $containerContent.innerHTML = arrayShow;
-        
+
+        // console.log(arrayShow);
+
+       
+       
+
+
     }
+
 
 
     $btnSearch.addEventListener('click', e => {
@@ -101,13 +113,13 @@ document.addEventListener('DOMContentLoaded', e => {
 
             let result = data.filter((word) => {
 
-
-                return (word.city.toLowerCase().includes(citySearch) || word.country.toLowerCase().includes(citySearch))
+                return (word.city.toLowerCase().includes(citySearch) || word.country.toLowerCase().includes(citySearch));
 
             });
 
 
             displayHotels(result);
+            clickFilter(result);
 
 
         } catch (err) {
